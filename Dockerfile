@@ -51,8 +51,6 @@ RUN mkdir /cm1/.netcdf_links \
 ENV LD_LIBRARY_PATH /usr/lib64/openmpi/lib
 ENV PATH .:/usr/lib64/openmpi/bin:$PATH
 ENV NETCDF /cm1/.netcdf_links
-ENV JASPERINC /usr/include/jasper/
-ENV JASPERLIB /usr/lib64/
 ENV LDFLAGS -lm
 ENV EDITOR emacs
 
