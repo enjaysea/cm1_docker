@@ -3,21 +3,19 @@ This is George Bryan's **CM1 Numerical Model, Release 20.3  (cm1r20.3)  25 June 
 
 Since the output data can become very sizable and would be lost if the container is stopped, it should be diverted to a location on your local file system. This is optional but highly recommended. The alternative is to copy the data to your system after it's been written. However, you'd then have two copies of the data until the container was stopped and its volume purged with the Docker prune command.
 
-If you run this container on a Windows 10 system, the second option may be your only choice, unless some clever person can answer the dilemma described below in the **Windows Caveat** discussion. 
-
-Having said that, I run it on Windows myself, but within a WSL Linux shell. [WSL is a free virtualization subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10)  built-in to Windows 10.
+If you run this container on a Windows 10 system, the second option may be your only choice, unless some clever person can answer the dilemma described below in the **Windows Caveat** discussion. Having said that, I run it on Windows myself, but within a WSL Linux shell. [WSL is a free built-in virtualization subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for Windows 10.
 
 ### Building the container
 If you pulled this container directly from **hub.docker.com** then you can skip this step and go to the section: **Starting the container**.
 
-If you are starting from my github repo, all that you will have in your local folder is the Dockerfile and this readme file, so you will need to build the container first. To do so, enter the command:
+If you are using the enjaysea/cm1_docker github repo then you will need to build the container first with:
 ```
 docker build -t cm1 .
 ```
 This will take several minutes, so this is a good time to enjoy a tasty refreshment.
 
 ### Starting the container 
-This is how you start the container with an output folder synced to a local directory on your system. **Do not** create the output folder yourself prior to running this command. The command will create it for you, and with the correct owner and folder permissions.
+This is how you start the container with an output folder synced to a local directory on your system. **Do not** create the output folder yourself prior to running this command. The command will create it for you, and will do so with the correct owner and folder permissions.
 ```
 docker run -id --name <desired_name> -v <host_output_dir>:/cm1/output cm1 (or enjaysea/cm1)
 ```
@@ -29,7 +27,7 @@ You can specify a location relative to your starting directory by using the **$(
 ```
 docker run -id --name cm1 -v "$(pwd)"/output:/cm1/output cm1
 ```
-After the command successfully completes, the ID of the container is displayed on the command line. You don't need to take note of it because you can see the ID plus any other information about the container by using the command
+After the command successfully completes, the ID of the container is displayed on the command line. You don't need to take note of it because you can see the ID plus any other information about the container by using the command:
 ```
 docker ps
 
@@ -62,7 +60,7 @@ You will need, at a minimum, the **namelist.input** file in this directory befor
 ```
 cp /cm1/run/namelist.input /cm1/output
 ```
-Make any changes you'd like to **namelist.input**. I always change the **output_format** to **2** and the **output_filetype** to **1** so the output is stored in a single **netcdf** format file compatible with both **VIsit** and **Vapor**. After learning how to use **CM1** you'll undoubtedly have a certain set of changes to the file that you'll know well.
+Make any changes you'd like to **namelist.input**. I always change the **output_format** to **2** and the **output_filetype** to **1** so the output is stored in a single **netcdf** format file compatible with both **VIsit** and **Vapor**. 
  
 You may also find that other files from the run directory are needed depending on what you're doing. If so just copy them over before starting, for example:
 ```
@@ -79,7 +77,7 @@ If you'd like to speed things up you can make use of your computer's available C
 mpirun -n 2 ../run/cm1
 ```
 
-Once everything checks out, you can search up one of the many fine tutorials out there which teach you how to use **CM1**.  There is also a wealth of information provided by the author contained in the various README files in the /cm1 directory.
+Once everything checks out, you can search up one of the many fine tutorials out there which teach you how to use **CM1**.  There is also a wealth of information provided by the author contained in the various README files in the **/cm1** directory.
 
 ### Rebuilding CM1
 To rebuild the system you can go into the **/cm1/src** directory, make any changes you need, then rebuild with 
