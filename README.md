@@ -1,4 +1,4 @@
-﻿## CM1 Docker image
+## CM1 Docker image
 This is George Bryan's **CM1 Numerical Model, Release 20.3  (cm1r20.3)  25 June 2021**  based on a Centos 7 (Linux) image. The container opens with  **CM1** already built and installed. But the source and all necessary packages are also included so it can be rebuilt as necessary.
 
 Since the output data can become very sizable and would be lost if the container is stopped, it should be diverted to a location on your local file system. This is optional but highly recommended. The alternative is to copy the data to your system after it's been written. However, you'd then have two copies of the data until the container was stopped and its volume purged with the Docker prune command.
