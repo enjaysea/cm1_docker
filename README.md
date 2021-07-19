@@ -6,9 +6,9 @@ Since the output data can become very sizable and would be lost if the container
 If you run this container on a Windows 10 system, the second option may be your only choice, unless some clever person can answer the dilemma described below in the **Windows Caveat** discussion. Having said that, I run it on Windows myself, but within a WSL Linux shell. [WSL is a free built-in virtualization subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for Windows 10.
 
 ### Building the container
-If you pulled this container directly from **hub.docker.com** then you can skip this step and go to the section: **Starting the container**.
+If you pulled this container directly from [hub.docker.com](https://hub.docker.com/repository/docker/enjaysea/cm1) then you can skip this step and go to the section: **Starting the container**.
 
-If you are using the enjaysea/cm1_docker github repo then you will need to build the container first with:
+If you are using the [enjaysea/cm1_docker](https://github.com/enjaysea/cm1_docker) github repo then you will need to build the container first with:
 ```
 docker build -t cm1 .
 ```
