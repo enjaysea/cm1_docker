@@ -1,9 +1,11 @@
 ## CM1 Docker image
 This is George Bryan's **CM1 Numerical Model, Release 20.3  (cm1r20.3)  25 June 2021**  based on a Centos 7 (Linux) image. The container opens with  **CM1** already built and installed. But the source and all necessary packages are also included so it can be rebuilt as necessary.
 
-Since the output data can become very sizable and would be lost if the container is stopped, it should be diverted to a location on your local file system. This is optional but highly recommended. The alternative is to copy the data to your system after it's been written. However, you'd then have two copies of the data until the container was stopped and its volume purged with the Docker prune command.
+In order to prevent losing the output data, when the container is stopped, you should set up a directory on your local filesystem that will be mapped to a directory within the container. Anything stored in one directory will be visible in the other. 
 
-If you run this container on a Windows 10 system, the second option may be your only choice, unless some clever person can answer the dilemma described below in the **Windows Caveat** discussion. Having said that, I run it on Windows myself, but within a WSL Linux shell. [WSL is a free built-in virtualization subsystem](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for Windows 10.
+Don't manually create your output directory on your local machine. Allow the `docker run` command to create it for you. Otherwise, you may end up with the folder being owned by `root` and the built-in `wrfuser` unable to write to the directory.
+
+This seems to happen no matter what on Windows 10, so I suggest you use `WSL`[a free Windows 10 virtualization framework](https://docs.microsoft.com/en-us/windows/wsl/install-win10) instead, since this problem can be prevented when running from a Linux shell.
 
 ### Building the container
 If you pulled this container directly from [hub.docker.com](https://hub.docker.com/repository/docker/enjaysea/cm1) then you can skip this step and go to the section: **Starting the container**.
