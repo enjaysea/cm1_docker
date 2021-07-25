@@ -3,10 +3,6 @@ This is George Bryan's **CM1 Numerical Model, Release 20.3  (cm1r20.3)  25 June 
 
 In order to prevent losing the output data, when the container is stopped, you should set up a directory on your local filesystem that will be mapped to a directory within the container. Anything stored in one directory will be visible in the other. 
 
-Don't manually create your output directory on your local machine. Allow the `docker run` command to create it for you. Otherwise, you may end up with the folder being owned by `root` and the built-in `wrfuser` unable to write to the directory.
-
-This seems to happen no matter what on Windows 10, so I suggest you use `WSL`[a free Windows 10 virtualization framework](https://docs.microsoft.com/en-us/windows/wsl/install-win10) instead, since this problem can be prevented when running from a Linux shell.
-
 ### Building the container
 If you pulled this container directly from [hub.docker.com](https://hub.docker.com/repository/docker/enjaysea/cm1) then you can skip this step and go to the section: **Starting the container**.
 
