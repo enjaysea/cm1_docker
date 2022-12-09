@@ -1,0 +1,6 @@
+rm -rf cm1out*
+rm -rf cm1rst*
+rm -rf cm1_config.txt
+rm -rf proc.info
+rm -rf *~;rm -rf .*~
+

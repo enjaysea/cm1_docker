@@ -1,0 +1,3 @@
+docker stop cm1
+docker rm cm1
+docker image rm cm1
