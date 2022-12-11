@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Set up base OS environment
 sudo yum -y update && yum -y install scl file gcc gcc-gfortran gcc-c++ glibc.i686 libgcc.i686 libpng-devel hostname m4 make perl tar bash time wget which zlib zlib-devel openssh-clients openssh-server net-tools libgfortran epel-release git emacs-nox ack fftw-devel
 
@@ -36,4 +38,3 @@ source /home/centos/.bashrc
 cd /home/centos/cm1/src
 make clean
 make
-
