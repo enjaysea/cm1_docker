@@ -1,6 +1,0 @@
-rm -rf ^M/
-rm -rf cm1^M/
-rm -rf /home/centos/cm1
-rm -rf /home/centos/.openmpi
-rm -rf /home/centos/.netcdf_links
-

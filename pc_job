@@ -1,8 +1,0 @@
-#!/bin/bash
-#SBATCH --job-name=cm1
-#SBATCH --ntasks=36
-#SBATCH --constraint=c5n.4xlarge
-
-module load openmpi
-mpirun -np #SLURM_NTASKS /home/centos/cm1/run/cm1.exe > cm1.log
-
