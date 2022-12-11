@@ -37,4 +37,8 @@ chown -R centos:centos /home/centos
 
 # Back to system user
 su centos
-. /home/centos/.bashrc
+source /home/centos/.bashrc
+
+cd /home/centos/cm1/src
+make clean
+make
