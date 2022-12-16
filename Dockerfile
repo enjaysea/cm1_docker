@@ -1,39 +1,31 @@
 FROM ubuntu:20.04
 MAINTAINER nick@centanni.com
 
-#scl
-#file
+#scl file hostname m4 openssh-clients openssh-server net-tools epel-release
+
 #gcc
 #gcc-gfortran
 #gcc-c++
 #glibc.i686
 #libgcc.i686 
 #libpng-devel
-#hostname
-#m4
 #zlib 
 #zlib-devel
-#openssh-clients
-#openssh-server
-#net-tools
 #libgfortran 
-#epel-release
 #netcdf-openmpi-devel.x86_64
 #netcdf-fortran-openmpi-devel.x86_64
 #netcdf-fortran-openmpi.x86_64
 #openmpi.x86_64 openmpi-devel.x86_64
 
-# Necessary to prevent apt from asking for the timezone
-ENV tz=America/Los_Angeles
-
 RUN apt update 
-RUN apt install -y curl
+RUN apt install -y curl build-essential gfortran
 
 RUN curl -o ./miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN chmod +x ./miniconda.sh
 RUN ./miniconda.sh -b -p /opt/conda
+ENV PATH .:/opt/conda/bin:$PATH
 
-RUN /opt/conda/bin/conda install -y -c conda-forge emacs
+RUN conda install -y -c conda-forge emacs libnetcdf openmpi
 
 RUN groupadd cm1 -g 1000
 RUN useradd -u 1000 -g cm1 -M -d /base cm1user
