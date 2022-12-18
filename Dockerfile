@@ -19,6 +19,12 @@ RUN mkdir /base \
  && chmod 6755 /base \
  && chown -R cm1user:cm1 /base
 
+RUN mkdir -p /base/.openmpi 
+RUN echo btl=tcp,self > /base/.openmpi/mca-params.conf \
+ && echo plm_rsh_no_tree_spawn=1 >> /base/.openmpi/mca-params.conf \
+ && echo btl_base_warn_component_unused=0 >> /base/.openmpi/mca-params.conf \
+ && echo pml=ob1 >> /base/.openmpi/mca-params.conf 
+
 # 
 # Finished with root tasks
 #
@@ -35,7 +41,7 @@ RUN mkdir /base/.netcdf_links \
  && ln -sf /usr/include/openmpi-x86_64/ /base/.netcdf_links/include \
  && ln -sf /usr/lib64/openmpi/lib /base/.netcdf_links/lib 
 
-ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/lib64/openmpi/lib
+ENV LD_LIBRARY_PATH /usr/lib64/openmpi/lib
 ENV PATH .:/usr/lib64/openmpi/bin:$PATH
 ENV NETCDF /base/.netcdf_links
 ENV LDFLAGS -lm
