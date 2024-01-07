@@ -11,7 +11,7 @@ The data directory is where CM1 will look for the namelist.input file and where 
 
 Otherwise if you'd like an image that includes the source inside it rather than referring to an external location:
 
-1) Edit the file cm1_create_local and make this change:
+1) Edit the file cm1_create_complete and make this change:
   1a) Replace '/mnt/f/cm1' with the location on disk to your data directory
 The data directory is where CM1 will look for the namelist.input file and where it will write the output files
 3) Run cm1_refresh_complete
