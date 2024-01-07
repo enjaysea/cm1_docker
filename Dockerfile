@@ -15,9 +15,11 @@ RUN yum -y install netcdf-openmpi-devel.x86_64 netcdf-fortran-openmpi-devel.x86_
 RUN groupadd cm1 -g 1000
 RUN useradd -u 1000 -g cm1 -G wheel -M -d /base cm1user
 
-RUN mkdir /base \
- && chmod 6755 /base \
- && chown -R cm1user:cm1 /base
+RUN mkdir -p /base \
+ && chmod 6755 /base 
+
+RUN git clone https://github.com/enjaysea/cm1r21.0.git /base/cm1
+RUN chown -R cm1user:cm1 /base
 
 RUN mkdir -p /base/.openmpi 
 RUN echo btl=tcp,self > /base/.openmpi/mca-params.conf \
@@ -46,6 +48,11 @@ ENV PATH .:/usr/lib64/openmpi/bin:$PATH
 ENV NETCDF /base/.netcdf_links
 ENV LDFLAGS -lm
 ENV EDITOR emacs
+
+RUN cd /base/cm1/src \
+ && make \
+ && make clean \
+ && mv /base/cm1/run/cm1.exe /base/cm1/run/cm1
  
 CMD ["/bin/bash"]
 
