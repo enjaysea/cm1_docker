@@ -15,6 +15,14 @@ RUN yum -y update && yum -y install scl file gcc gcc-gfortran gcc-c++ glibc.i686
 #RUN yum -y install openmpi-devel.x86_64 
 #RUN yum clean all
 
+# For M1 hardware
+RUN yum -y install netcdf-openmpi-devel.aarch64
+RUN yum -y install netcdf-fortran-openmpi-devel.aarch64
+RUN yum -y install netcdf-fortran-openmpi.aarch64
+RUN yum -y install openmpi.aarch64
+RUN yum -y install openmpi-devel.aarch64
+RUN yum clean all
+
 RUN groupadd cm1 -g 1000
 RUN useradd -u 1000 -g cm1 -G wheel -M -d /base cm1user
 
