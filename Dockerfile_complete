@@ -60,10 +60,9 @@ ENV NETCDF /base/.netcdf_links
 ENV LDFLAGS -lm
 ENV EDITOR emacs
 
-#RUN cd /base/cm1/src \
-# && make \
-# && make clean \
-# && mv /base/cm1/run/cm1.exe /base/cm1/run/cm1
+RUN cd /base/cm1/src \
+ && make \
+ && make clean \
+ && mv /base/cm1/run/cm1.exe /base/cm1/run/cm1
  
 CMD ["/bin/bash"]
-
