@@ -1,4 +1,4 @@
-cp Dockerfile_local Dockerfile
+cp ./Dockerfile_local ./Dockerfile
 ./cm1_kill
 ./cm1_build
 ./cm1_create_local
