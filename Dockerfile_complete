@@ -8,9 +8,12 @@ RUN yum -y update && yum -y install scl file gcc gcc-gfortran gcc-c++ glibc.i686
  sudo epel-release git emacs-nox ack fftw-devel
 
 # Get 3rd party EPEL builds of netcdf and openmpi dependencies
-RUN yum -y install netcdf-openmpi-devel.x86_64 netcdf-fortran-openmpi-devel.x86_64 \
- netcdf-fortran-openmpi.x86_64 openmpi.x86_64 openmpi-devel.x86_64 \
- && yum clean all
+RUN yum -y install netcdf-openmpi-devel.x86_64
+RUN yum -y install netcdf-fortran-openmpi-devel.x86_64
+RUN yum -y install netcdf-fortran-openmpi.x86_64 
+RUN yum -y install openmpi.x86_64 
+RUN yum -y install openmpi-devel.x86_64 
+RUN yum clean all
 
 RUN groupadd cm1 -g 1000
 RUN useradd -u 1000 -g cm1 -G wheel -M -d /base cm1user
