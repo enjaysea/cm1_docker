@@ -50,8 +50,14 @@ RUN echo export 'PS1="\e[0;92m\u\e[0;95m \$PWD \e[m"' >> /base/.bashrc \
  && echo 'alias cls="clear"' >> /base/.bashrc \
  && echo 'alias nobak="rm -rf *~"' >> /base/.bashrc 
 
+# Intel hardward
+#RUN mkdir /base/.netcdf_links \
+# && ln -sf /usr/include/openmpi-x86_64/ /base/.netcdf_links/include \
+# && ln -sf /usr/lib64/openmpi/lib /base/.netcdf_links/lib 
+
+# ARM hardware
 RUN mkdir /base/.netcdf_links \
- && ln -sf /usr/include/openmpi-x86_64/ /base/.netcdf_links/include \
+ && ln -sf /usr/include/openmpi-aarch64/ /base/.netcdf_links/include \
  && ln -sf /usr/lib64/openmpi/lib /base/.netcdf_links/lib 
 
 ENV LD_LIBRARY_PATH /usr/lib64/openmpi/lib
