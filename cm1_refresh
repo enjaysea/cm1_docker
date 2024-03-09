@@ -1,4 +1,3 @@
-cp ./Dockerfile_complete ./Dockerfile
 ./cm1_kill
 ./cm1_build
 ./cm1_create
