@@ -8,18 +8,18 @@ RUN yum -y update && yum -y install scl file gcc gcc-gfortran gcc-c++ glibc.i686
  sudo epel-release git emacs-nox ack fftw-devel
 
 # Get 3rd party EPEL builds of netcdf and openmpi dependencies
-RUN yum -y install netcdf-openmpi-devel.x86_64
-RUN yum -y install netcdf-fortran-openmpi-devel.x86_64
-RUN yum -y install netcdf-fortran-openmpi.x86_64 
-RUN yum -y install openmpi.x86_64 
-RUN yum -y install openmpi-devel.x86_64
+#RUN yum -y install netcdf-openmpi-devel.x86_64
+#RUN yum -y install netcdf-fortran-openmpi-devel.x86_64
+#RUN yum -y install netcdf-fortran-openmpi.x86_64 
+#RUN yum -y install openmpi.x86_64 
+#RUN yum -y install openmpi-devel.x86_64
 
 # For M1 hardware
-#RUN yum -y install netcdf-openmpi-devel.aarch64
-#RUN yum -y install netcdf-fortran-openmpi-devel.aarch64
-#RUN yum -y install netcdf-fortran-openmpi.aarch64
-#RUN yum -y install openmpi.aarch64
-#RUN yum -y install openmpi-devel.aarch64
+RUN yum -y install netcdf-openmpi-devel.aarch64
+RUN yum -y install netcdf-fortran-openmpi-devel.aarch64
+RUN yum -y install netcdf-fortran-openmpi.aarch64
+RUN yum -y install openmpi.aarch64
+RUN yum -y install openmpi-devel.aarch64
 
 RUN yum -y install gdb
 RUN yum clean all
@@ -52,14 +52,14 @@ RUN echo export 'PS1="\e[0;92m\u\e[0;95m \$PWD \e[m"' >> /base/.bashrc \
  && echo 'alias nobak="rm -rf *~"' >> /base/.bashrc 
 
 # Intel hardware
-RUN mkdir /base/.netcdf_links \
- && ln -sf /usr/include/openmpi-x86_64/ /base/.netcdf_links/include \
- && ln -sf /usr/lib64/openmpi/lib /base/.netcdf_links/lib 
+#RUN mkdir /base/.netcdf_links \
+# && ln -sf /usr/include/openmpi-x86_64/ /base/.netcdf_links/include \
+# && ln -sf /usr/lib64/openmpi/lib /base/.netcdf_links/lib 
 
 # ARM hardware
-#RUN mkdir /base/.netcdf_links \
-# && ln -sf /usr/include/openmpi-aarch64/ /base/.netcdf_links/include \
-# && ln -sf /usr/lib64/openmpi/lib /base/.netcdf_links/lib 
+RUN mkdir /base/.netcdf_links \
+ && ln -sf /usr/include/openmpi-aarch64/ /base/.netcdf_links/include \
+ && ln -sf /usr/lib64/openmpi/lib /base/.netcdf_links/lib 
 
 ENV LD_LIBRARY_PATH /usr/lib64/openmpi/lib
 ENV PATH .:/usr/lib64/openmpi/bin:$PATH
